@@ -1,0 +1,26 @@
+# IntelliJ project files
+.idea/
+*.iml
+
+# Build directories
+/out/
+target/
+build/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Compiled files
+*.class
+
+# Maven or Gradle
+*.jar
+*.war
+*.ear
+
+# Others
+*.swp
