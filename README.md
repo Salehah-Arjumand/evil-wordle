@@ -41,6 +41,8 @@ removeOne(List(1,2,3,2,1), 2) => List(1, 3, 2, 1)
 removeOne(List(1,2,3,2,1), 1) => List(2, 3, 2, 1)
 removeOne(List(1,2,3,2,1), 0) => List(1, 2, 3, 2, 1)
 
+---
+
 ### `score(secret: String, guess: String): List[Tip]`
 Calculates Wordle-style feedback based on the comparison of the guess with the secret word. The output is a list of `Tip` values representing:
 
