@@ -23,3 +23,38 @@ This project is a Scala implementation of **Evil Wordle**, a twisted version of 
 - Lists, Maps, Recursion, Pattern Matching
 
 ---
+
+## 📂 Function Overview
+
+### `get_wordle_list()`
+Reads a text file containing 5-letter words and returns a list of valid words.
+
+---
+
+### `removeOne[A](list: List[A], elem: A): List[A]`
+Polymorphic function that removes **one** occurrence of `elem` from a list if present.
+
+Examples:
+```scala
+removeOne(List(1,2,3,2,1), 3) => List(1, 2, 2, 1)
+removeOne(List(1,2,3,2,1), 2) => List(1, 3, 2, 1)
+removeOne(List(1,2,3,2,1), 1) => List(2, 3, 2, 1)
+removeOne(List(1,2,3,2,1), 0) => List(1, 2, 3, 2, 1)
+
+### `score(secret: String, guess: String): List[Tip]`
+Calculates feedback for a guess based on Wordle rules:
+
+Correct: letter in correct position
+Present: letter exists but in wrong position
+Absent: letter not in the word
+
+Handles repeated letters using a helper:
+
+pool(secret, guess) → letters in secret not matched by position
+aux → recursively compares characters using the pool
+
+Exammples:
+```scala
+score("chess", "caves") => List(Correct, Absent, Absent, Present, Correct)
+score("chess", "swiss") => List(Absent, Absent, Absent, Correct, Correct)
+
