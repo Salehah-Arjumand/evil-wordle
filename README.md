@@ -42,18 +42,17 @@ removeOne(List(1,2,3,2,1), 1) => List(2, 3, 2, 1)
 removeOne(List(1,2,3,2,1), 0) => List(1, 2, 3, 2, 1)
 
 ### `score(secret: String, guess: String): List[Tip]`
-Calculates feedback for a guess based on Wordle rules:
+Calculates Wordle-style feedback based on the comparison of the guess with the secret word. The output is a list of `Tip` values representing:
 
-Correct: letter in correct position
-Present: letter exists but in wrong position
-Absent: letter not in the word
+- `Correct`: letter is in the correct position
+- `Present`: letter exists in the word but is in the wrong position
+- `Absent`: letter is not in the word at all
 
-Handles repeated letters using a helper:
+It handles repeated letters correctly by:
+- First calculating a `pool` of unmatched letters from the secret
+- Then recursively applying the logic using a helper `aux` function
 
-pool(secret, guess) → letters in secret not matched by position
-aux → recursively compares characters using the pool
-
-Exammples:
+Examples:
 ```scala
 score("chess", "caves") => List(Correct, Absent, Absent, Present, Correct)
 score("chess", "swiss") => List(Absent, Absent, Absent, Correct, Correct)
